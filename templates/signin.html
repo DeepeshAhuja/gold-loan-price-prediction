@@ -1,0 +1,68 @@
+{% extends 'layout.html' %}
+{% block head%}
+<title>Signin</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{{ url_for('static', filename= 'assets/img/favicon.png') }}" rel="icon">
+  <link href="{{ url_for('static', filename= 'assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{{ url_for('static', filename= 'assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename= 'assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename= 'assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename= 'assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename= 'assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link rel="stylesheet" href="../static/assets/css/signin.css">
+
+{% endblock %}
+{%block body %}
+<section class="breadcrumbs">
+  <div class="container">
+
+    <div class="d-flex justify-content-between align-items-center">
+      <h2>Gold Price Prediction</h2>
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li>Signin</li>
+      </ol>
+    </div>
+
+  </div>
+</section><!-- End Breadcrumbs -->
+<section>
+<!-- partial:index.partial.html -->
+<div id="login-form-wrap">
+  <!-- <video autoplay loop muted plays-inline class="background-clip">
+    <source src = "../static/video/edu.mp4" type = "video/mp4">
+</video> -->
+  <h2>Login</h2>
+  {% if message is defined and message %}
+                    <div class="alert">
+                        <h3>{{message}}</h3>
+                    </div>
+                    {% endif %}  
+  <form action="{{url_for('signin')}}" id="login-form" method="post">
+    <p>
+    <input type="text" id="username" name="username" placeholder="Username" required><i class="validation"></i>
+    </p>
+    <p>
+    <input type="password" id="password" name="password" placeholder="Password" required><i class="validation"></i>
+    </p>
+    <p>
+    <input type="submit" id="login" value="Login">
+    </p>
+  </form>
+  <div id="create-account-wrap">
+    <p>Not a member? <a href="{{url_for('signup')}}"><b>Create Account</b></a><p>
+  </div><!--create-account-wrap-->
+</div><!--login-form-wrap-->
+<!-- partial -->
+  </section>
+{% endblock %}

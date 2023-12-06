@@ -1,0 +1,76 @@
+{% extends 'layout.html' %}
+{% block head%}
+<title>Signup</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{{ url_for('static', filename= 'assets/img/favicon.png') }}" rel="icon">
+  <link href="{{ url_for('static', filename= 'assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{{ url_for('static', filename= 'assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename= 'assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename= 'assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename= 'assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename= 'assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link rel="stylesheet" href="../static/assets/css/signup.css">
+
+{% endblock %}
+{% block body%}
+<main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Gold Price Prediction</h2>
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li><a href="/signin">Signin</a></li>
+            <li>Signup</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+<section>    
+<div id="signup-form-wrap">
+  <h2>Signup</h2>
+{% if message is defined and message %}
+      <div class="alert">
+          <h3>{{message}}</h3>
+      </div>
+      {% endif %}  
+<form action="{{url_for('signup')}}" id="signup-form" method="post">
+  <p>
+  <input type="text" id="username" name="username" placeholder="Full Name" required><i class="validation"><span></span><span></span></i>
+  </p>
+  <p>
+  <input type="email" id="email" name="email" placeholder="Email Address" required><i class="validation"><span></span><span></span></i>
+  </p>
+  <p>
+  <input type="password" id="password" name="password" placeholder="Password" required><i class="validation"><span></span><span></span></i>
+  </p>
+  <!--<div id="msg">
+    Password must contain:
+    <p id="letter" class="invalid"><b>lowercase</b> letter <br><b>capital (uppercase)</b> letter <br><b>number</b><br> Minimum <b>8 characters </b><br> </p>
+  </div> -->
+  <p>
+  <input type="submit" id="login" value="Sign Up">
+  </p>
+</form>
+<div id="create-account-wrap">
+  <p>Already a member? <a href="{{url_for('signin')}}"><b>Login</b></a><p>
+</div><!--create-account-wrap-->
+</div><!--login-form-wrap-->
+<!-- partial -->
+</section>
+</main>
+{% endblock %}

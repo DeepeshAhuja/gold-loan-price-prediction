@@ -1,0 +1,214 @@
+{% extends "layout.html" %}
+{% block head%}
+<title>Cookies Loan</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{{ url_for('static', filename= 'assets/img/favicon.png') }}" rel="icon">
+  <link href="{{ url_for('static', filename= 'assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{{ url_for('static', filename= 'assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename= 'assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename= 'assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename= 'assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename= 'assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{{ url_for('static', filename= 'assets/css/gold_price.css') }}" rel="stylesheet">
+{% endblock %}
+{% block body %}
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Gold Price Prediction</h2>
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li>Gold Price Prediction</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    
+<!-- ======= Contact Section ======= -->
+<section id="contact" class="contact">
+  <div class="container">
+      <div class="section-title" style="padding-bottom: 0px;">
+          <h2>Gold Price Prediction</h2>
+      </div>
+      <div class="row mt-5">
+          <div class="col-lg-2" ></div>  
+          <div class="col-lg-8 mt-5 mt-lg-0">
+              <form action="/predict_gold" method="post" class="php-email-form">
+                  <div class="row">
+                      <div class="col-md-6 form-group">
+                          <input type="text" name="SPX" class="form-control" id="SPX" placeholder="SPX (S&P 500 Index)" required>
+                      </div>
+                      <div class="col-md-6 form-group mt-3 mt-md-0">
+                          <input type="text" class="form-control" name="USO" id="USO" placeholder="USO" required>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-6 form-group">
+                          <input type="text" name="SLV" class="form-control" id="SLV" placeholder="Silver Price" required>
+                      </div>
+                      <div class="col-md-6 form-group mt-3 mt-md-0">
+                          <input type="text" class="form-control" name="EUR_USD" id="EUR_USD" placeholder="EUR/USD Price" required>
+                      </div>
+                  </div>
+                  
+                  
+                  <div class="text-center"><button type="submit" id="sub">Predict</button></div>
+                  {% if goldresult %}
+                  <div class="row" style="padding-top: 25px;">
+                    <div class="col-md-12 ">
+                      <div class="alert alert-success" role="alert">
+                        {{ goldresult }}
+                      </div>
+                    </div>
+                  </div>
+                  {% endif %}
+              </form>
+          </div>
+      </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+      <!-- <section class="emi_calculator text_section" id="goldloancal">
+        <div class="container">
+        <h2>EMI Calculator for Gold Loan </h2>
+        <p>You can calculate your eligibility for availing a gold loan by Muthoot Finance by using the Gold Loan Calculator. All you are required to do is enter details such as name, email-id, contact number, gold type, the amount you require, and few other details. You can use our <a href="https://www.muthootfinance.com/gold-loan/emi" style="color:red;">Gold Loan EMI</a> Calculator to calculate EMI as well. </p>
+        <div class="pl_calculator show-on-scroll">
+        <form>
+        <div class="calc_wrap">
+        <h2>Gold Loan EMI Calculator</h2>
+        <div class="styled_select">
+        <select class="form-control basic_select" id="roi1">
+          <option selected>Select Scheme</option>
+          <option value="mol" value="selected">Muthoot One Percent Loan (MOL)</option>
+          <option value="mul">Muthoot Ulimate Loan (MUL)</option>
+          <option value="mdl">Muthoot Delight Loan</option>
+          <option value="mhp">Muthoot High Value Loan Plus (MHP)</option>
+          <option value="mal">Muthoot Advantage Loan</option>
+          <option value="msl">Muthoot Super Loan (MSL)</option>
+          <option value="mml">Muthoot Mahila Loan (MML)</option>
+          <option value="mhl">Muthoot High Value Loan (MHL)</option>
+          <option value="hni">High Networth Individual (HNI)</option>
+        </select>
+        </div> 
+        <div class="row">
+        <div class="col-md-4">
+          <div class="l_block">
+            <div class="icon">
+              <img loading="lazy" width="100%" height="auto"  src="https://cdn.muthootfinance.com/themes/bartik/images/images/Gold-loan-icon-new.png" alt="Gold Loan Monthly Loan" title="Gold Loan Monthly Loan" />
+            </div>
+            <h3>Loan Tenure<span class='' id="nm_value">12</span> Monthly Loan EMI
+            <span> <i class="fa fa-rupee"></i><span class='' id="emi">300000</span></span></h3>
+          </div>
+        </div>
+        <div style="display:none;">
+        <span class='' id="la_value">30000</span>
+          <h4><span class="label label-warning">Rate of Interest [ROI] is <strong><span class='' id="roi_value">12</span></strong></span></h4>
+            <div class="alert alert-info col-md-5">
+            <strong>Monthly EMI</strong><br>
+            <button class="btn btn-success btn-lg" id='emi' type="button"></button><br>
+          </div>
+        
+          <div class="alert alert-info col-md-5">
+            <strong>Total Interest</strong><br>
+            <button class="btn btn-warning btn-lg" id='tbl_int' type="button"></button><br>
+          </div>
+        
+          <div class="alert alert-info col-md-5">
+            <strong>Payable Amount</strong><br>
+            <button class="btn btn-info btn-lg" id='tbl_full' type="button"></button><br>
+          </div>
+        
+          <div class="alert alert-info col-md-5">
+            <strong>Interest Percentage</strong><br>
+            <button class="btn btn-info btn-lg" id='tbl_int_pge' type="button"></button><br>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="r_block" id="refreshslider">
+            <div class="range_block price_range">
+              <div class="inner">
+                <input id="range1" type="text" data-slider-min="0" data-slider-max="150000" data-slider-step="1000" data-slider-value="30000"/>
+                <ul class="lbl_list">
+                  <li><i class="fa fa-rupee" id="span_min_val"></i>0</li>
+                  <li><i class="fa fa-rupee"></i><span id="span_max_val">10,0000</span></li>
+                </ul>
+              </div>	
+            </div>	
+            <div class="range_block month_range">
+                    <div class="inner">
+                        <input id="range2" type="text" data-slider-min="1" data-slider-max="365" data-slider-step="1" data-slider-value="365"/>
+                        <ul class="lbl_list">
+                            <li>1 Day</li>
+                            <li>365 Days</li>
+                        </ul>
+                    </div>	
+                </div>
+            <h5>These are the estimated values and are directional, please contact us or visit our nearest branch for more details.</h5>
+          </div>
+        </div>
+        </div>
+        </div>
+        <div class="btn_wrap">
+        <p>Check status of your Gold Loan</p>
+        <a class="btn" href="https://online.muthootfinance.com/" target="_blank" rel="noopener noreferrer"><span>Check Now</span></a>
+        </div>
+        </form>
+        </div>
+        </div>
+        </section>
+     -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </main><!-- End #main -->
+
+  
+  {% endblock %}

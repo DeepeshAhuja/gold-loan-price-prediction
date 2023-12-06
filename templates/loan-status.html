@@ -1,0 +1,113 @@
+{% extends "layout.html" %}
+{% block head%}
+<title>Cookies Loan</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{{ url_for('static', filename= 'assets/img/favicon.png') }}" rel="icon">
+  <link href="{{ url_for('static', filename= 'assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Dosis:300,400,500,,600,700,700i|Lato:300,300i,400,400i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{{ url_for('static', filename= 'assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename= 'assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename= 'assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename= 'assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename= 'assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{{ url_for('static', filename= 'assets/css/style.css') }}" rel="stylesheet">
+{% endblock %}
+{% block body %}
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <br>
+          <br>
+          <h2>Loan Sanction Form</h2>
+       
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="icon-box">
+              <h1>Personal Details</h1>
+              <h1>&nbsp;</h1>
+              <h1>&nbsp;</h1>
+              
+              <h1>Ornament Details</h1>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-wow-delay="0.2s">
+            <div class="icon-box">
+              <form action="{{url_for('sanction')}}" id="login-form" method="post">
+                
+                <p>
+                <input type="text" id="firstname" name="firstname" placeholder="First name" required><i class="validation"></i>
+                </p>
+                <p>
+                <input type="text" id="lastname" name="lastname" placeholder="Last name" required><i class="validation"></i>
+                </p>
+                <p>
+                  <input type="number" id="phno" name="phno" placeholder="Mobile Number" required><i class="validation"></i>
+                </p>
+                <p>Please upload your image </p>
+                <input type="file" id="myFile" name="filename" accept="image/*">
+                <br>
+                <br>
+                <p>
+                  <input type="text" id="otype" name="otype" placeholder="Ornament Type" required><i class="validation"></i>
+                  </p>
+                  <p>
+                  <input type="number" id="gweight" name="Gweight" placeholder="Gross Weight" required><i class="validation"></i>
+                  </p>
+                  <p>
+                    <input type="number" id="gprice" name="gprice" placeholder="Gold Price" required><i class="validation"></i>
+                  </p>
+                  <p>
+                  <input type="number" id="purity" name="purity" placeholder="Purity" required><i class="validation"></i>
+                  </p>
+                  <p>
+                  <input type="number" id="gamount" name="gamount" placeholder="Gross Amount" required><i class="validation"></i>
+                  </p>
+                  <p>Time of Tanscation</p>
+                  <p>
+                    <input type="date" id="tstamp" name="tstamp" placeholder="Time stamp of the transc" required><i class="validation"></i>
+                  </p>
+                  <p>
+                  <input type="text" id="bid" name="bid" placeholder="Bill ID" required><i class="validation"></i>
+                  </p>
+                  <p>Please upload the image of the Ornament</p>
+                  <input type="file" id="myFile" name="filename1" accept="image/*"> 
+                  <br>
+                  <br>
+                <input type="submit" id="submit" value="Submit">
+                </p>
+              </form>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6" data-wow-delay="0.2s">
+            <div class="icon-box">
+                If any problem, please contact us
+            </div>
+          
+          </div>
+          
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+  </main><!-- End #main -->
+
+  
+  {% endblock %}
